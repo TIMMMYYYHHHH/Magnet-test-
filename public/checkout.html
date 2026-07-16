@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — CustomVibe</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23E8547A%22/><text x=%2250%22 y=%2266%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Georgia,serif%22>C</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo">Custom<span class="logo-dot">Vibe</span></a>
+      <nav class="nav-links" style="display:flex;">
+        <a href="/design">Edit design</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="badge">Step 2 of 2 · Checkout</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-top:48px;">
+      <div class="container" style="max-width:760px;">
+
+        <ol class="step-indicator" id="stepIndicator">
+          <li data-step="1" class="active"><span class="n">1</span> Review basket</li>
+          <li data-step="2"><span class="n">2</span> Delivery</li>
+          <li data-step="3"><span class="n">3</span> Payment</li>
+        </ol>
+
+        <!-- Empty-cart notice (shown if no design exists yet) -->
+        <div class="card text-center hidden" id="emptyState">
+          <p>Looks like you haven't designed any magnets yet.</p>
+          <a href="/design" class="btn btn-primary">Start designing</a>
+        </div>
+
+        <div id="checkoutFlow">
+          <!-- Step 1: Review basket -->
+          <section data-step-panel="1" class="card">
+            <h3>Review your order</h3>
+            <div class="basket-list" id="basketList"></div>
+            <div class="price-panel-row"><span>Quantity</span><span class="value numeric" id="rQty"></span></div>
+            <div class="price-panel-row"><span>Tier</span><span class="badge" id="rTier"></span></div>
+            <div class="price-panel-row" id="rSavingsRow" style="display:none;"><span>Savings</span><span class="value price" style="color:var(--color-success);" id="rSavings"></span></div>
+            <div class="price-panel-row total"><span>Total</span><span class="value price" id="rTotal"></span></div>
+            <div style="display:flex;gap:12px;margin-top:24px;">
+              <a href="/design" class="btn btn-secondary">Edit design</a>
+              <button type="button" class="btn btn-primary" id="toStep2">Continue to delivery</button>
+            </div>
+          </section>
+
+          <!-- Step 2: PUDO delivery details -->
+          <section data-step-panel="2" class="card hidden">
+            <h3>Delivery details</h3>
+            <p class="small-print" style="margin-bottom:20px;">We ship nationwide via PUDO pickup points. Tell us your preferred point and we'll take it from there.</p>
+            <form id="deliveryForm" novalidate>
+              <div class="form-row two">
+                <div class="form-field">
+                  <label for="fName">Full name</label>
+                  <input type="text" id="fName" name="fullName" required />
+                  <div class="form-error">Please enter your full name.</div>
+                </div>
+                <div class="form-field">
+                  <label for="fPhone">Cell number</label>
+                  <input type="tel" id="fPhone" name="phone" placeholder="082 123 4567" required />
+                  <div class="form-error">Please enter a valid cell number.</div>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="fEmail">Email</label>
+                <input type="email" id="fEmail" name="email" required />
+                <div class="form-error">Please enter a valid email.</div>
+              </div>
+              <div class="form-field">
+                <label for="fPudo">Preferred PUDO pickup point</label>
+                <input type="text" id="fPudo" name="pudoPoint" placeholder="e.g. PUDO Gateway Mall, Umhlanga" required />
+                <div class="hint">Search "PUDO points" + your suburb to find your nearest one.</div>
+                <div class="form-error">Please tell us your preferred pickup point.</div>
+              </div>
+              <div class="form-row two">
+                <div class="form-field">
+                  <label for="fSuburb">Suburb / city</label>
+                  <input type="text" id="fSuburb" name="suburb" required />
+                  <div class="form-error">Please enter your suburb or city.</div>
+                </div>
+                <div class="form-field">
+                  <label for="fProvince">Province</label>
+                  <select id="fProvince" name="province" required>
+                    <option value="">Select a province</option>
+                    <option>Eastern Cape</option>
+                    <option>Free State</option>
+                    <option>Gauteng</option>
+                    <option>KwaZulu-Natal</option>
+                    <option>Limpopo</option>
+                    <option>Mpumalanga</option>
+                    <option>Northern Cape</option>
+                    <option>North West</option>
+                    <option>Western Cape</option>
+                  </select>
+                  <div class="form-error">Please select a province.</div>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="fNotes">Order notes (optional)</label>
+                <textarea id="fNotes" name="notes" rows="3"></textarea>
+              </div>
+              <div style="display:flex;gap:12px;margin-top:16px;">
+                <button type="button" class="btn btn-secondary" id="toStep1">Back</button>
+                <button type="submit" class="btn btn-primary">Continue to payment</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Step 3: Payment -->
+          <section data-step-panel="3" class="card hidden">
+            <h3>Review and pay</h3>
+            <div class="price-panel-row"><span>Quantity</span><span class="value numeric" id="pQty"></span></div>
+            <div class="price-panel-row"><span>Deliver to</span><span class="value" id="pDelivery" style="font-size:0.9rem;text-align:right;"></span></div>
+            <div class="price-panel-row total"><span>Total due</span><span class="value price" id="pTotal"></span></div>
+
+            <div class="form-field" style="margin-top:20px;">
+              <label style="display:flex;align-items:flex-start;gap:10px;font-weight:500;">
+                <input type="checkbox" id="fTerms" style="width:auto;margin-top:3px;" />
+                <span>I confirm my photos and delivery details are correct, and I agree to CustomVibe's terms of sale.</span>
+              </label>
+            </div>
+
+            <p class="small-print" id="paymentNote">You'll be securely redirected to PayFast to complete your payment.</p>
+            <div style="display:flex;gap:12px;margin-top:16px;">
+              <button type="button" class="btn btn-secondary" id="toStep2b">Back</button>
+              <button type="button" class="btn btn-primary" id="placeOrderBtn">Place order</button>
+            </div>
+            <div class="form-status" id="orderStatus"></div>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <a class="whatsapp-float" href="https://wa.me/27000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+  <script type="module" src="/js/checkout.js"></script>
+</body>
+</html>

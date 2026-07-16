@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order received — CustomVibe</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23E8547A%22/><text x=%2250%22 y=%2266%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Georgia,serif%22>C</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo">Custom<span class="logo-dot">Vibe</span></a>
+      <nav class="nav-links" style="display:flex;">
+        <a href="/">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-top:72px;">
+      <div class="container text-center" style="max-width:560px;">
+        <div style="font-size:3rem;margin-bottom:16px;">🎉</div>
+        <h1 style="font-size:2.2rem;">Thanks — your order's in!</h1>
+        <p id="confirmMessage">We've received your order and are confirming your payment with PayFast. You'll get a WhatsApp or email update shortly once everything's set.</p>
+        <div class="card" id="refCard" style="display:inline-block;margin:24px auto;">
+          <span class="small-print">Order reference</span>
+          <div class="price" id="orderRef" style="font-size:1.3rem;">—</div>
+        </div>
+        <p class="small-print">Keep this reference handy if you need to contact us about your order.</p>
+        <div style="margin-top:24px;">
+          <a href="/" class="btn btn-primary">Back to home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" style="margin-top:64px;">
+    <div class="container footer-bottom">
+      <span>© 2026 CustomVibe. All rights reserved.</span>
+      <span>Handmade in Durban 🇿🇦</span>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/27000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+  <script type="module">
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref");
+    document.getElementById("orderRef").textContent = ref || "Not available";
+    if (!ref) {
+      document.getElementById("confirmMessage").textContent =
+        "We couldn't find an order reference for this page. If you've just completed a payment, check your email for confirmation, or reach out to us on WhatsApp.";
+    }
+    // The cart's only purpose was getting us through checkout — clear it now that we're done.
+    try {
+      sessionStorage.removeItem("customvibe:cart");
+    } catch (err) {
+      /* sessionStorage unavailable — nothing to clean up */
+    }
+  </script>
+</body>
+</html>

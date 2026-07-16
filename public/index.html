@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CustomVibe — Custom photo fridge magnets, handmade in Durban</title>
+  <meta name="description" content="Turn your favourite photos into 7.5x7.5cm fridge magnets, handmade in Durban and delivered nationwide via PUDO. Find your tribe at CustomVibe." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23E8547A%22/><text x=%2250%22 y=%2266%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Georgia,serif%22>C</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo">Custom<span class="logo-dot">Vibe</span></a>
+      <nav class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/design" class="btn btn-primary">Start designing</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#how-it-works">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Handmade in Durban</span>
+          <h1>Find your tribe at <span class="accent">CustomVibe.</span></h1>
+          <p class="hero-tagline">Your photos, made to stick. Upload your favourite moments and we'll hand-make them into 7.5×7.5cm fridge magnets, delivered anywhere in South Africa.</p>
+          <div class="hero-ctas">
+            <a href="/design" class="btn btn-primary">Start designing</a>
+            <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="magnet-mock"></div>
+          <div class="magnet-mock magnet-mock-sm a"></div>
+          <div class="magnet-mock magnet-mock-sm b"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="trust-strip" style="padding-top:0;">
+      <div class="container trust-grid">
+        <div class="trust-item"><span class="icon">✓</span> Hand-inspected quality</div>
+        <div class="trust-item"><span class="icon">🔒</span> Your photos stay private</div>
+        <div class="trust-item"><span class="icon">🚚</span> Nationwide delivery</div>
+        <div class="trust-item"><span class="icon">🛡️</span> SSL Encrypted</div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Simple process</span>
+          <h2>How it works</h2>
+          <p>From camera roll to fridge door in four easy steps.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <div class="step-icon">📤</div>
+            <h3>Upload photo</h3>
+            <p>Choose any photo from your gallery. We accept JPG and PNG.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <div class="step-icon">✂️</div>
+            <h3>Crop & adjust</h3>
+            <p>Pan and zoom to fit the perfect square, then preview your magnet.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <div class="step-icon">🛒</div>
+            <h3>Choose quantity & pay</h3>
+            <p>Pick your bundle and check out securely with PayFast.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">4</span>
+            <div class="step-icon">📦</div>
+            <h3>We deliver</h3>
+            <p>Handmade in Durban and shipped nationwide to your nearest PUDO point.</p>
+          </div>
+        </div>
+        <div class="text-center" style="margin-top:36px;">
+          <a href="/design" class="btn btn-primary">Start designing</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing calculator -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Bundle & save</span>
+          <h2>Pricing that grows with your tribe</h2>
+          <p>Slide to see your price update live — the more you order, the more you save.</p>
+        </div>
+        <div class="calculator">
+          <div class="calc-qty-row">
+            <span class="calc-qty-label">Quantity</span>
+            <span class="calc-qty-value numeric" id="calcQtyValue">1</span>
+          </div>
+          <input type="range" id="calcSlider" min="1" max="24" value="1" step="1" aria-label="Quantity" />
+          <div class="calc-tier-badge">
+            <span class="badge" id="calcTierBadge">Single Shot Trial</span>
+          </div>
+          <div class="calc-results">
+            <div class="calc-stat">
+              <span class="label">Per magnet</span>
+              <span class="value price" id="calcUnitPrice">R50</span>
+            </div>
+            <div class="calc-stat">
+              <span class="label">Total</span>
+              <span class="value price" id="calcTotal">R50</span>
+            </div>
+            <div class="calc-stat">
+              <span class="label">Delivery</span>
+              <span class="value" style="font-size:1rem;">via PUDO</span>
+            </div>
+          </div>
+          <div class="calc-savings" id="calcSavings"></div>
+          <div class="text-center">
+            <a href="/design" class="btn btn-primary btn-block">Start designing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get inspired gallery -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Get inspired</span>
+          <h2>Endless possibilities</h2>
+          <p>Family faces, pets, travel snaps, wedding memories — if it's a photo you love, it belongs on your fridge.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="g-tile"></div>
+          <div class="g-tile"></div>
+          <div class="g-tile"></div>
+          <div class="g-tile"></div>
+          <div class="g-tile"></div>
+          <div class="g-tile"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Loved nationwide</span>
+          <h2>What our tribe is saying</h2>
+        </div>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"The quality blew me away — every magnet is so crisp and the crop tool made it so easy to get right. My fridge is basically a photo album now."</p>
+            <div class="testimonial-author">
+              <div class="avatar">N</div>
+              <div>
+                <div class="name">Nomsa D.</div>
+                <div class="place">Durban</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Ordered the half-dozen pack for my mom's birthday. Arrived at my local PUDO point in a few days, beautifully packaged. Will be back for more."</p>
+            <div class="testimonial-author">
+              <div class="avatar">T</div>
+              <div>
+                <div class="name">Thabo M.</div>
+                <div class="place">Johannesburg</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Bought the bulk pack as wedding favours — everyone loved them. Handmade quality really shows, and the price was unbeatable for the amount we ordered."</p>
+            <div class="testimonial-author">
+              <div class="avatar">L</div>
+              <div>
+                <div class="name">Lerato P.</div>
+                <div class="place">Cape Town</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Common questions</span>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              How long does delivery take?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">Most orders reach your chosen PUDO pickup point within 3–5 working days of dispatch, since every magnet is handmade to order in Durban.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              What is the quality of the magnets?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">Each magnet is 7.5×7.5cm, printed on durable, fade-resistant material with a strong magnetic backing, and hand-inspected before it ships.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              Can I upload photos from my phone?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">Yes — the Design Studio works right in your mobile browser. Upload straight from your camera roll and crop to fit.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              What is PUDO and how does pickup work?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">PUDO is a nationwide network of pickup points across South Africa. At checkout, tell us the name and suburb of your preferred point and we'll ship your order there for convenient collection.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              Are my photos kept private?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">Your photos are only used to produce your order. They're transmitted securely and are never shared, sold, or used anywhere else.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              Do you offer bulk discounts?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">Yes! Order 6 for our Tribe Half-Dozen Discount, or 10+ for our Ultimate Pack Bulk Rate at R40 a magnet — great for gifts, weddings, and events.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Get in touch</span>
+          <h2>Questions? Say hi.</h2>
+          <p>We usually reply within a day.</p>
+        </div>
+        <form class="card" id="contactForm" style="max-width:560px;margin:0 auto;">
+          <div class="form-row two">
+            <div class="form-field">
+              <label for="cfName">Name</label>
+              <input type="text" id="cfName" name="name" required />
+              <div class="form-error">Please enter your name.</div>
+            </div>
+            <div class="form-field">
+              <label for="cfEmail">Email</label>
+              <input type="email" id="cfEmail" name="email" required />
+              <div class="form-error">Please enter a valid email.</div>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="cfMessage">Message</label>
+            <textarea id="cfMessage" name="message" rows="4" required></textarea>
+            <div class="form-error">Please enter a message.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send message</button>
+          <div class="form-status" id="contactStatus"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">Custom<span class="logo-dot">Vibe</span></a>
+        <p>Custom photo fridge magnets, handmade in Durban and delivered nationwide via PUDO.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="/design">Start designing</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>hello@customvibe.co.za</li>
+          <li>Durban, South Africa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 CustomVibe. All rights reserved.</span>
+      <span>Handmade in Durban 🇿🇦</span>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/27000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design Studio — CustomVibe</title>
+  <meta name="description" content="Upload, crop and preview your custom photo fridge magnets before checkout." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23E8547A%22/><text x=%2250%22 y=%2266%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Georgia,serif%22>C</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo">Custom<span class="logo-dot">Vibe</span></a>
+      <nav class="nav-links" style="display:flex;">
+        <a href="/">Home</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="badge">Step 1 of 2 · Design</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-top:48px;">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:32px;">
+          <span class="eyebrow">Design studio</span>
+          <h2>Make it yours</h2>
+          <p>Choose your quantity, then upload and crop a photo for each magnet.</p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <div class="card" style="margin-bottom:28px;">
+              <div class="calc-qty-row">
+                <span class="calc-qty-label">Quantity</span>
+                <span class="calc-qty-value numeric" id="qtyValue">1</span>
+              </div>
+              <input type="range" id="qtySlider" min="1" max="24" value="1" step="1" aria-label="Quantity" />
+              <div id="applyAllWrap" class="hidden">
+                <button class="btn btn-outline btn-block" id="applyAllBtn" type="button">Use this photo for all magnets</button>
+              </div>
+            </div>
+
+            <div id="slotsGrid" class="steps-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));"></div>
+            <p class="form-error" id="slotsError" style="display:none;margin-top:12px;">Please add a photo to every magnet before continuing.</p>
+          </div>
+
+          <div>
+            <div class="price-panel">
+              <h3 style="margin-bottom:16px;">Order summary</h3>
+              <div class="price-panel-row"><span>Quantity</span><span class="value numeric" id="summaryQty">1</span></div>
+              <div class="price-panel-row"><span>Tier</span><span class="badge" id="summaryTier">Single Shot Trial</span></div>
+              <div class="price-panel-row"><span>Per magnet</span><span class="value price" id="summaryUnit">R50</span></div>
+              <div class="price-panel-row" id="summarySavingsRow" style="display:none;"><span>Savings</span><span class="value price" style="color:var(--color-success);" id="summarySavings">R0</span></div>
+              <div class="price-panel-row total"><span>Total</span><span class="value price" id="summaryTotal">R50</span></div>
+              <button class="btn btn-primary btn-block" id="continueBtn" type="button" style="margin-top:20px;">Continue to checkout</button>
+              <p class="small-print" style="margin-top:12px;">7.5×7.5cm each · handmade in Durban · delivered via PUDO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <input type="file" id="fileInput" accept="image/png,image/jpeg" class="hidden" />
+
+  <a class="whatsapp-float" href="https://wa.me/27000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+  <script type="module" src="/js/design-studio.js"></script>
+</body>
+</html>

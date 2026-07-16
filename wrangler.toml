@@ -1,0 +1,30 @@
+name = "customvibe"
+main = "src/worker.js"
+compatibility_date = "2026-07-16"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+[[send_email]]
+name = "EMAIL"
+destination_address = "timmymorton1@gmail.com"
+
+[vars]
+# PayFast sandbox test credentials (publicly documented by PayFast for testing).
+# Swap these for your live merchant_id/merchant_key before going live, and set
+# PAYFAST_PASSPHRASE as a secret via `wrangler secret put PAYFAST_PASSPHRASE`.
+# See README.md for full instructions.
+PAYFAST_MERCHANT_ID = "10000100"
+PAYFAST_MERCHANT_KEY = "46f0cd694581a"
+PAYFAST_MODE = "sandbox"
+SITE_URL = "https://customvibe.workers.dev"
+
+# Cloudflare Email Routing requires the "from" address to belong to a domain
+# configured in the same Cloudflare account (a bare *.workers.dev URL will
+# NOT work here). Update FROM_EMAIL once you've added your custom domain —
+# see README.md.
+FROM_EMAIL = "orders@customvibe.workers.dev"
+EMAIL_TO = "timmymorton1@gmail.com"
