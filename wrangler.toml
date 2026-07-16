@@ -1,4 +1,4 @@
-name = "customvibe"
+name = "magnet"
 main = "src/worker.js"
 compatibility_date = "2026-07-16"
 compatibility_flags = ["nodejs_compat"]
