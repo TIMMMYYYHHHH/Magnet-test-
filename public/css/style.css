@@ -3,7 +3,7 @@
    Handmade in Durban. Your photos, made to stick.
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Permanent+Marker&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root {
   /* Palette */
@@ -20,16 +20,23 @@
   --color-border: #f2d9e2;
   --color-white: #ffffff;
 
+  /* Durban Market Stall — paper/marker accents, layered on top of the locked palette above */
+  --color-paper: #fbf3e6;
+  --color-paper-edge: #e8d9be;
+  --color-marker: #241f2e;
+
   /* Type */
   --font-heading: "DM Serif Display", Georgia, serif;
   --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display-hand: "Permanent Marker", cursive;
 
   /* Scale */
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-full: 999px;
+  --radius-tag: 6px;
   --shadow-sm: 0 2px 10px rgba(45, 43, 58, 0.06);
   --shadow-md: 0 8px 30px rgba(45, 43, 58, 0.1);
   --shadow-lg: 0 20px 60px rgba(45, 43, 58, 0.16);
@@ -239,6 +246,68 @@ section {
   color: var(--color-success);
 }
 
+/* ---- Price tag (pricing-tier signature element) -------------------------- */
+.price-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display-hand);
+  font-size: 0.95rem;
+  color: var(--color-marker);
+  background: var(--color-paper);
+  border: 1px solid var(--color-paper-edge);
+  padding: 8px 16px 8px 28px;
+  border-radius: var(--radius-tag);
+  clip-path: polygon(16px 0%, 100% 0%, 100% 100%, 16px 100%, 0% 50%);
+  box-shadow: var(--shadow-sm);
+  transform: rotate(-2deg);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.price-tag::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--color-paper-edge);
+  box-shadow: inset 0 1px 2px rgba(36, 31, 46, 0.4);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .price-tag.has-loop {
+    animation: tag-sway 5s ease-in-out infinite;
+    transform-origin: top center;
+  }
+}
+
+@keyframes tag-sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+.price-tag.has-loop::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: -10px;
+  width: 12px;
+  height: 11px;
+  border: 2px solid var(--color-marker);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  opacity: 0.5;
+}
+
 /* ---- Nav ---------------------------------------------------------------- */
 .nav {
   position: sticky;
@@ -357,11 +426,40 @@ section {
 }
 
 .hero-copy {
+  position: relative;
   text-align: center;
+  background: var(--color-paper);
+  border: 1px solid var(--color-paper-edge);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 44px 28px 36px;
+  transform: rotate(-1deg);
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 74px;
+  height: 28px;
+  margin-left: -110px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.7) 0 6px,
+    rgba(255, 255, 255, 0.45) 6px 12px
+  );
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow-sm);
+  transform: rotate(-6deg);
 }
 
 .hero-copy h1 {
   margin-bottom: 0.35em;
+  font-family: var(--font-display-hand);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
 }
 
 .hero-copy h1 .accent {
@@ -517,11 +615,26 @@ section {
   border-radius: var(--radius-full);
   background: var(--color-accent);
   color: var(--color-white);
-  font-weight: 700;
+  font-weight: 400;
+  font-family: var(--font-display-hand);
+  font-size: 1.05rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  transform: rotate(-8deg);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.step-card:nth-child(2) .step-num {
+  transform: rotate(6deg);
+}
+
+.step-card:nth-child(3) .step-num {
+  transform: rotate(-5deg);
+}
+
+.step-card:nth-child(4) .step-num {
+  transform: rotate(7deg);
 }
 
 .step-icon {
@@ -763,6 +876,27 @@ input[type="range"]::-moz-range-thumb {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ---- Pinned print treatment (static photo tiles only — never .crop-viewport) ---- */
+.pinned {
+  transform: rotate(var(--pin-rotate, -2deg));
+}
+
+.gallery-grid .pinned {
+  border: 4px solid var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-grid .g-tile:nth-child(6n + 1) { --pin-rotate: -2deg; }
+.gallery-grid .g-tile:nth-child(6n + 2) { --pin-rotate: 1.5deg; }
+.gallery-grid .g-tile:nth-child(6n + 3) { --pin-rotate: -1deg; }
+.gallery-grid .g-tile:nth-child(6n + 4) { --pin-rotate: 2deg; }
+.gallery-grid .g-tile:nth-child(6n + 5) { --pin-rotate: -1.5deg; }
+.gallery-grid .g-tile:nth-child(6n + 6) { --pin-rotate: 1deg; }
+
+.basket-list .magnet-preview:nth-child(3n + 1) { --pin-rotate: -2deg; }
+.basket-list .magnet-preview:nth-child(3n + 2) { --pin-rotate: 1.5deg; }
+.basket-list .magnet-preview:nth-child(3n + 3) { --pin-rotate: -1deg; }
 
 /* ---- FAQ / accordion ---------------------------------------------------- */
 .accordion {
@@ -1172,6 +1306,20 @@ input[type="range"]::-moz-range-thumb {
 
 .hidden {
   display: none !important;
+}
+
+/* ---- Scroll reveal (landing page sections only) --------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .small-print {

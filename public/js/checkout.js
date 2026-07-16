@@ -30,7 +30,7 @@ function initCheckout(cart) {
   const basketList = document.getElementById("basketList");
   cart.items.forEach((item) => {
     const div = document.createElement("div");
-    div.className = "magnet-preview";
+    div.className = "magnet-preview pinned";
     const img = document.createElement("img");
     img.src = item.dataUrl;
     img.alt = "Magnet preview";

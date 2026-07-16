@@ -1,5 +1,23 @@
 import { calculatePrice, formatCurrency } from "./pricing.js";
 
+// ---- Scroll reveal (below-the-fold sections only; hero is visible immediately) ----
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in-view"));
+}
+
 // ---- Mobile nav toggle -------------------------------------------------
 const navToggle = document.getElementById("navToggle");
 const navMobile = document.getElementById("navMobile");
